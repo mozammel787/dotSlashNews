@@ -1,12 +1,14 @@
 /* eslint-disable react/no-unknown-property */
 import { useState, useEffect } from "react";
 import { useLoaderData, useNavigate } from "react-router-dom";
+import useAuth from "../Hooks/useAuth";
 
 const EditPost = () => {
   const news = useLoaderData();
-  const { title, urlToImage, description, top, _id, category } = news;
+  const { user } = useAuth();
   const navigate = useNavigate();
   const [newCatagory, setNewCatagory] = useState(category || "");
+  const { title, urlToImage, description, top, _id, category } = news;
 
   useEffect(() => {
     if (category) {
@@ -44,7 +46,7 @@ const EditPost = () => {
       .then((res) => res.json())
       .then((data) => {
         if (data.acknowledged) {
-          navigate("/dashbord");
+          navigate(`my-post/${user.displayName}`);
         }
       });
 
