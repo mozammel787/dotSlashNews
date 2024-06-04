@@ -68,14 +68,15 @@ const Header = () => {
                 className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52"
               >
                 <li>
-                  <Link to={"/dashbord"} className="justify-between">
-                    Dashbord
+                  <Link to={"/dashbord"} className="mt-5 tracking-wide font-semibold bg-gray-300 text-black w-full py-3 rounded-lg hover:bg-black hover:text-white transition-all duration-300 ease-in-out flex items-center justify-center">
+                    <span className=" text-center ">Dashbord</span>
+                    
                   </Link>
                 </li>
 
                 <li className="mt-3">
                   <div
-                    className="bg-red-600 text-white"
+                    className="  tracking-wide font-semibold bg-gray-300 text-black w-full py-3 rounded-lg hover:bg-red-600 hover:text-white transition-all duration-300 ease-in-out flex items-center justify-center "
                     onClick={() => logOut()}
                   >
                     Logout

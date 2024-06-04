@@ -14,9 +14,9 @@ const HeadNews = ({news}) => {
     }, [news]);
     return (
         <div className=" bg-black   flex items-center my-5">
-            <p className="text-3xl font-bold text-white p-3 flex items-center gap-4">
-            <span className="relative flex-shrink-0 w-3 h-3 rounded-full bg-white">
-						<span className="absolute flex-shrink-0 w-5 h-5 rounded-full -left-1 -top-1 animate-ping bg-white"></span>
+            <p className="text-3xl font-bold text-white p-4 flex items-center gap-4">
+            <span className="relative flex-shrink-0 w-3 h-3 rounded-full bg-red-700 mt-1">
+						<span className="absolute flex-shrink-0 w-5 h-5 rounded-full -left-1 -top-1 animate-ping bg-red-700"></span>
 					</span>
                 News:
             </p>

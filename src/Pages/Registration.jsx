@@ -70,6 +70,8 @@ const Ragistation = () => {
     const photoURL = form.photoURL.value;
     const password = form.password.value;
     const confarmPassword = form.confarmPassword.value;
+
+    
     if (password === confarmPassword) {
       await ragistation(email, password)
         .then((result) => {

@@ -8,7 +8,7 @@ const DashbordLayOut = () => {
     <>
       <div className="drawer lg:drawer-open">
         <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
-        <div className="drawer-content flex flex-col items-center justify-center">
+        <div className="drawer-content flex flex-col items-center ">
           <Outlet />
           <label
             htmlFor="my-drawer-2"
@@ -141,7 +141,7 @@ const DashbordLayOut = () => {
                       <span>My Profile</span>
                     </Link>
                   </li>
-                  <li className="rounded-sm  hover:bg-gray-200">
+                  {/* <li className="rounded-sm  hover:bg-gray-200">
                     <Link to={"edit-profile"}
                       rel="noopener noreferrer"
                       className="flex items-center p-2 space-x-3 rounded-md"
@@ -174,7 +174,7 @@ const DashbordLayOut = () => {
                       </svg>
                       <span>Edit Profile</span>
                     </Link>
-                  </li>
+                  </li> */}
                   <li className="rounded-sm  hover:bg-gray-200">
                     <Link to={`my-post/${user.displayName}`}
                       rel="noopener noreferrer"
