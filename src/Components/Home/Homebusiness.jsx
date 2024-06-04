@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import BusinessCard from "./BusinessCard";
 
 const Homebusiness = ({ news }) => {
-    const businessNews = news.filter((data) => data.catagory === "business");
+    const businessNews = news?.filter((data) => data.catagory === "business");
 
   const fetcherNews = businessNews.slice(0, 1);
   const letestNews = businessNews.slice(1, 4);
@@ -78,7 +78,7 @@ const Homebusiness = ({ news }) => {
           <Link   to={"/catagory/busness"}>See All</Link>
         </div>
       <div className="grid grid-cols-1 sm:grid-cols-12 gap-10">
-        {fetcherNews.map((data) => (
+        {fetcherNews?.map((data) => (
           <Link to={`news/${data._id}`} key={data._id} className="sm:col-span-6 lg:col-span-9">
             
               <img src={data.urlToImage} className="mx-auto"/>
@@ -108,7 +108,7 @@ const Homebusiness = ({ news }) => {
         ))}
 
         <div className="sm:col-span-12 lg:col-span-3">
-          {letestNews.map((data) => (
+          {letestNews?.map((data) => (
             <BusinessCard key={data._id} news={data}></BusinessCard>
           ))}
         </div>

@@ -31,7 +31,6 @@ const AuthProvider = ({ children }) => {
     setLoder(true);
     return signInWithEmailAndPassword(auth, email, password);
   };
-
   const googleLogin = () => {
     return signInWithPopup(auth, googleProvider);
   };
@@ -52,7 +51,6 @@ const AuthProvider = ({ children }) => {
     });
     return () => unsascribe();
   }, []);
-
   const userInfo = {
     googleLogin,
     gitHubLogIn,
@@ -61,6 +59,7 @@ const AuthProvider = ({ children }) => {
     user,
     loder,
     logOut,
+    setLoder
   };
 
   return (

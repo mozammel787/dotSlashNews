@@ -8,18 +8,20 @@ import HeadNews from "../Components/Home/HeadNews";
 
 
 const Home = () => {
-    const data = useLoaderData()
-    
-    return (
-        <div className="container mx-auto">
-            <HeadNews news={data}/>
-            <Hero news={data}/>
-            <AllCards news={data}/>
-            <Homebusiness news={data}/>
-            <HomeSport news={data}/>
-            <HomeOuther news={data}/>
-        </div>
-    );
+
+  const data = useLoaderData();
+
+
+  return (
+    <div className="container mx-auto">
+      <HeadNews news={data} />
+      <Hero news={data} />
+      <AllCards news={data} />
+      <Homebusiness news={data} />
+      <HomeSport news={data} />
+      <HomeOuther news={data} />
+    </div>
+  );
 };
 
 export default Home;

@@ -20,8 +20,8 @@ const AllNews = () => {
     <>
 <h2 className="text-center text-5xl font-bold mt-10" >All News</h2>
       <div className="container mx-auto my-10 flex flex-wrap gap-10 items-center  justify-around">
-        {articles.map((data) => (
-          <SingleCard key={data.articles} news={data}>
+        {articles?.map((data) => (
+          <SingleCard key={data._id} news={data}>
        
           </SingleCard>
         ))}

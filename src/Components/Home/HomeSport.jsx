@@ -6,7 +6,7 @@ import SoprtCard from "./SoprtCard";
 
 
 const HomeSport = ({news}) => {
-    const businesportNews = news.filter((data) => data.catagory === "sports");
+    const businesportNews = news?.filter((data) => data.catagory === "sports");
 
     const fetcherNews = businesportNews.slice(0, 6);
   return (
@@ -80,7 +80,7 @@ const HomeSport = ({news}) => {
             <Link   to={"/catagory/sport"}>See All</Link>
           </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-10">
-          {fetcherNews.map((data) => (
+          {fetcherNews?.map((data) => (
             <SoprtCard key={data._id} news={data}></SoprtCard>
           ))}
           </div>

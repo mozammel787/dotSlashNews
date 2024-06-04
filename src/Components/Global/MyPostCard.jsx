@@ -6,7 +6,7 @@ const MyPostCard = ({ news, relodPost }) => {
   const { title, urlToImage, description, author, publishedAt, _id } = news;
 
   const handelDelete = async () => {
-    await fetch(`https://dot-slash-news-back-end.vercel.app/news/delete-post/${_id}`, {
+    await fetch(`https://dotslashnews-backend.onrender.com/news/delete-post/${_id}`, {
       method: "DELETE",
     })
       .then((res) => res.json)

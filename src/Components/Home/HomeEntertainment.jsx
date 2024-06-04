@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import OutherCard from "./OutherCard";
 
 const HomeEntertainment = ({ news }) => {
-  const businessNews = news.filter((data) => data.catagory === "entertainment");
+  const businessNews = news?.filter((data) => data.catagory === "entertainment");
 
   const fetcherNews = businessNews.slice(0, 1);
   const letestNews = businessNews.slice(1, 4);
@@ -77,7 +77,7 @@ const HomeEntertainment = ({ news }) => {
           <Link   to={"/catagory/entertaiment"}>See All</Link>
         </div>
         <div className="mb-5 pb-5 w-full border-b">
-          {fetcherNews.map((data) => (
+          {fetcherNews?.map((data) => (
              <Link to={`news/${data._id}`} key={data._id}>
               <a href="#">
                 <div
@@ -108,7 +108,7 @@ const HomeEntertainment = ({ news }) => {
         </div>
 
         {
-                    letestNews.map((data)=>(
+                    letestNews?.map((data)=>(
                         <OutherCard key={data._id} news={data}> </OutherCard>
                     ))
                 }

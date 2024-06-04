@@ -19,7 +19,7 @@ const Ragistation = () => {
           photoURL: result?.user?.photoURL,
           phoneNumber: result?.user?.phoneNumber,
         };
-        fetch("https://dot-slash-news-back-end.vercel.app/user", {
+        fetch("https://dotslashnews-backend.onrender.com/user", {
           method: "POST",
           headers: {
             "Content-type": "application/json",
@@ -27,6 +27,7 @@ const Ragistation = () => {
           body: JSON.stringify(user),
         })
           .then((res) => res.json())
+          // eslint-disable-next-line no-unused-vars
           .then((data) => {});
       })
       .catch((err) => {
@@ -43,7 +44,7 @@ const Ragistation = () => {
           photoURL: result?.user?.photoURL,
           phoneNumber: result?.user?.phoneNumber,
         };
-        fetch("https://dot-slash-news-back-end.vercel.app/user", {
+        fetch("https://dotslashnews-backend.onrender.com/user", {
           method: "POST",
           headers: {
             "Content-type": "application/json",
@@ -51,6 +52,7 @@ const Ragistation = () => {
           body: JSON.stringify(user),
         })
           .then((res) => res.json())
+          // eslint-disable-next-line no-unused-vars
           .then((data) => {});
       })
       .catch((err) => {
@@ -77,7 +79,7 @@ const Ragistation = () => {
             photoURL: photoURL,
             phoneNumber: result?.user?.phoneNumber,
           };
-          fetch("https://dot-slash-news-back-end.vercel.app/user", {
+          fetch("https://dotslashnews-backend.onrender.com/user", {
             method: "POST",
             headers: {
               "Content-type": "application/json",
@@ -85,6 +87,7 @@ const Ragistation = () => {
             body: JSON.stringify(user),
           })
             .then((res) => res.json())
+            // eslint-disable-next-line no-unused-vars
             .then((data) => {});
         })
         .catch((err) => {

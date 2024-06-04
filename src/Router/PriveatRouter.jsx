@@ -4,9 +4,10 @@ import Loding from "../Components/Global/Loding";
 import useAuth from "../Hooks/useAuth";
 
 const PriveatRouter = ({ children }) => {
-  const { user, loding } = useAuth();
+  const { user, loder } = useAuth();
   const location = useLocation();
-  if (loding) {
+
+  if (loder) {
     return <Loding />;
   }
 

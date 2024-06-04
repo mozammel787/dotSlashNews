@@ -86,7 +86,7 @@ const AllCards = ({news}) => {
         </div>
             <div className="flex flex-wrap gap-10 items-center  justify-around">
                 {
-                    letestNews.map((data)=>(
+                    letestNews?.map((data)=>(
                         <SingleCard key={data._id} news={data}> </SingleCard>
                     ))
                 }

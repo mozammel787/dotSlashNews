@@ -25,12 +25,12 @@ const HeadNews = ({news}) => {
 
            
             {
-                    articles.map((data)=>(
+                    articles?.map((data)=>(
                         <h2 className="text-nowrap text-xl" key={data._id} > {data.title}   . /    </h2>
                     ))
                 }
             {
-                    articles.map((data)=>(
+                    articles?.map((data)=>(
                         <h2 className="text-nowrap text-xl" key={data._id} > {data.title}   . /    </h2>
                     ))
                 }

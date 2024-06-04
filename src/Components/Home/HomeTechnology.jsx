@@ -1,13 +1,17 @@
 /* eslint-disable react/prop-types */
-/* eslint-disable react/no-unknown-property */
+
 import { Link } from "react-router-dom";
 import OutherCard from "./OutherCard";
+import useAuth from "../../Hooks/useAuth";
 
 const HomeTechnology = ({ news }) => {
-  const businessNews = news.filter((data) => data.catagory === "technology");
+  const {setLoder}= useAuth()
+
+  const businessNews = news?.filter((data) => data.catagory === "technology");
 
   const fetcherNews = businessNews.slice(0, 1);
   const letestNews = businessNews.slice(1, 4);
+  setLoder(false);
   return (
     <div>
       <div className="border p-5 py-10">
@@ -74,10 +78,10 @@ const HomeTechnology = ({ news }) => {
               Technology
             </a>
           </div>
-          <Link   to={"/catagory/tecnology"}>See All</Link>
+          <Link to={"/catagory/tecnology"}>See All</Link>
         </div>
         <div className="mb-5 pb-5 w-full border-b">
-          {fetcherNews.map((data) => (
+          {fetcherNews?.map((data) => (
             <Link to={`news/${data._id}`} key={data._id}>
               <a href="#">
                 <div
@@ -106,7 +110,7 @@ const HomeTechnology = ({ news }) => {
           ))}
         </div>
 
-        {letestNews.map((data) => (
+        {letestNews?.map((data) => (
           <OutherCard key={data._id} news={data}>
             {" "}
           </OutherCard>
