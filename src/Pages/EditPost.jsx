@@ -1,12 +1,11 @@
 /* eslint-disable react/no-unknown-property */
 import { useState, useEffect } from "react";
-import {useLoaderData } from "react-router-dom";
-
+import { useLoaderData, useNavigate } from "react-router-dom";
 
 const EditPost = () => {
   const news = useLoaderData();
   const { title, urlToImage, description, top, _id, category } = news;
-
+  const navigate = useNavigate();
   const [newCatagory, setNewCatagory] = useState(category || "");
 
   useEffect(() => {
@@ -32,18 +31,24 @@ const EditPost = () => {
       top,
     };
 
-    await fetch(`https://dotslashnews-backend.onrender.com/news/edit-post/${_id}`, {
-      method: "PATCH",
-      headers: {
-        "Content-type": "application/json",
-      },
-      body: JSON.stringify(post),
-    })
+    await fetch(
+      `https://dotslashnews-backend.onrender.com/news/edit-post/${_id}`,
+      {
+        method: "PATCH",
+        headers: {
+          "Content-type": "application/json",
+        },
+        body: JSON.stringify(post),
+      }
+    )
       .then((res) => res.json())
-      .then((data) => console.log(data));
+      .then((data) => {
+        if (data.acknowledged) {
+          navigate("/dashbord");
+        }
+      });
 
     form.reset();
-
   };
 
   return (

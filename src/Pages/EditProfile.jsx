@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
 import useAuth from "../Hooks/useAuth";
+import {  useNavigate } from 'react-router-dom';
 
 const EditProfile = () => {
   const { user } = useAuth();
   const [userInfo, setUserInfo] = useState([]);
-
+  const navigate = useNavigate();
   useEffect(() => {
     fetch(`https://dotslashnews-backend.onrender.com/user/${user?.email}`)
       .then((res) => res.json())
@@ -31,8 +32,13 @@ const EditProfile = () => {
       body: JSON.stringify(newData),
     })
       .then((res) => res.json())
-      .then((data) => console.log(data));
-  };
+      .then((data) => {console.log(data) 
+        if (data.acknowledged) {
+          navigate('/dashbord');
+        }
+      });
+    };
+
   return (
     <div className="w-full min-h-screen  py-1 md:w-2/3 lg:w-3/4">
       <div className="p-2 md:p-4 ">

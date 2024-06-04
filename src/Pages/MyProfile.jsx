@@ -25,7 +25,7 @@ const MyProfile = () => {
           <Link to={"edit-profile"} className="btn btn-primary rounded mr-0">Edit</Link>
 
           </div>
-          <div className="relative mx-auto w-40 h-40 -mt-20 shadow-xl rounded-full">
+          <div className="relative mx-auto w-40 h-40 -mt-28 shadow-xl rounded-full">
             <img
               className="mx-auto h-full w-full rounded-full object-cover"
               src={userInfo.photoURL}
@@ -38,7 +38,7 @@ const MyProfile = () => {
             </h1>
           )}
           {userInfo?.bio && (
-            <h1 className="my-4 text-center  text-gray-600">
+            <h1 className="my-4 text-center  text-gray-400">
               {userInfo.bio}
             </h1>
           )}
