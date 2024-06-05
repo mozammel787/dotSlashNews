@@ -5,18 +5,64 @@ import useAuth from "../Hooks/useAuth";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 
 const Login = () => {
-  const { googleLogin, gitHubLogIn, logIn, user } = useAuth();
+  const { googleLogin, gitHubLogIn, user, logIn } = useAuth();
 
   const navigate = useNavigate();
   const location = useLocation();
 
   const from = location?.state?.from?.pathname || "/";
-  
+
   const handelGoogleSubmit = () => {
-    googleLogin();
+    googleLogin()
+      .then((result) => {
+        const user = {
+          displayName: result?.user?.displayName,
+          email: result?.user?.email,
+          photoURL: result?.user?.photoURL,
+          phoneNumber: result?.user?.phoneNumber,
+        };
+        fetch("https://dotslashnews-backend.onrender.com/user/", {
+          method: "POST",
+          headers: {
+            "Content-type": "application/json",
+          },
+          body: JSON.stringify(user),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            localStorage.setItem("token", data?.token);
+          });
+      })
+      .catch((err) => {
+        console.log(err);
+        console.log(err);
+      });
   };
   const handelGitHubLogIn = () => {
-    gitHubLogIn();
+    gitHubLogIn()
+      .then((result) => {
+        const user = {
+          displayName: result?.user?.displayName,
+          email: result?.user?.email,
+          photoURL: result?.user?.photoURL,
+          phoneNumber: result?.user?.phoneNumber,
+        };
+        fetch("https://dotslashnews-backend.onrender.com/user", {
+          method: "POST",
+          headers: {
+            "Content-type": "application/json",
+          },
+          body: JSON.stringify(user),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            localStorage.setItem("token", data?.token);
+          });
+      })
+      .catch((err) => {
+        console.log(err);
+        console.log(err);
+      });
   };
 
   const handelSubmit = (e) => {
@@ -26,14 +72,33 @@ const Login = () => {
     const email = form.email.value;
     const password = form.password.value;
 
-    logIn(email, password);
+    logIn(email, password)
+      .then((result) => {
+        const user = {
+          displayName: result?.user?.displayName,
+          email: result?.user?.email,
+        };
+        fetch("https://dotslashnews-backend.onrender.com/user", {
+          method: "POST",
+          headers: {
+            "Content-type": "application/json",
+          },
+          body: JSON.stringify(user),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            localStorage.setItem("token", data?.token);
+          });
+      })
+      .catch((err) => {
+        console.log(err);
+        console.log(err);
+      });
   };
   useEffect(() => {
     if (user) {
       navigate(from, { replace: true });
     }
-
-
   }, [user, navigate, from]);
   return (
     <div>

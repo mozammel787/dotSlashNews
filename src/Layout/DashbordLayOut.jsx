@@ -176,7 +176,7 @@ const DashbordLayOut = () => {
                     </Link>
                   </li> */}
                   <li className="rounded-sm  hover:bg-gray-200">
-                    <Link to={`my-post/${user.displayName}`}
+                    <Link to={`my-post/${user.email}`}
                       rel="noopener noreferrer"
                       className="flex items-center p-2 space-x-3 rounded-md"
                     >

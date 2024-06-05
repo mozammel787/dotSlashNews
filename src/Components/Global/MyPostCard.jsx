@@ -6,9 +6,17 @@ const MyPostCard = ({ news, relodPost }) => {
   const { title, urlToImage, description, author, publishedAt, _id } = news;
 
   const handelDelete = async () => {
-    await fetch(`https://dotslashnews-backend.onrender.com/news/delete-post/${_id}`, {
-      method: "DELETE",
-    })
+    const token = localStorage.getItem("token");
+
+    await fetch(
+      `https://dotslashnews-backend.onrender.com/news/delete-post/${_id}`,
+      {
+        method: "DELETE",
+        headers: {
+          authorization: `Beare ${token}`,
+        },
+      }
+    )
       .then((res) => res.json)
       .then((data) => {
         console.log(data);
@@ -43,7 +51,7 @@ const MyPostCard = ({ news, relodPost }) => {
           </div>
           <h2 className="card-title font-bold">{title}</h2>
           <p>{description}</p>
-          
+
           <div className="flex gap-2">
             <Link
               to={`/news/${_id}`}
@@ -52,7 +60,7 @@ const MyPostCard = ({ news, relodPost }) => {
               Read More
             </Link>
             <Link
-               to={`/dashbord/edit-post/${_id}`}
+              to={`/dashbord/edit-post/${_id}`}
               className="mt-5 tracking-wide font-semibold bg-green-600 text-gray-100 w-full py-4 rounded-lg hover:bg-black transition-all duration-300 ease-in-out flex items-center justify-center focus:shadow-outline focus:outline-none"
             >
               Edit post

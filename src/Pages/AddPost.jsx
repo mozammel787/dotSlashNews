@@ -7,6 +7,7 @@ const AddPost = () => {
 
 
   const handelSubmit = async (e) => {
+    const token = localStorage.getItem("token");
     e.preventDefault();
     const form = e.target;
 
@@ -40,6 +41,7 @@ const AddPost = () => {
       method: "POST",
       headers: {
         "Content-type": "application/json",
+        authorization: `Beare ${token}`,
       },
       body: JSON.stringify(post),
     })

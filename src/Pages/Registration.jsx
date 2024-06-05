@@ -19,7 +19,7 @@ const Ragistation = () => {
           photoURL: result?.user?.photoURL,
           phoneNumber: result?.user?.phoneNumber,
         };
-        fetch("https://dotslashnews-backend.onrender.com/user", {
+        fetch("https://dotslashnews-backend.onrender.com/user/", {
           method: "POST",
           headers: {
             "Content-type": "application/json",
@@ -27,8 +27,9 @@ const Ragistation = () => {
           body: JSON.stringify(user),
         })
           .then((res) => res.json())
-          // eslint-disable-next-line no-unused-vars
-          .then((data) => {});
+          .then((data) => {
+            localStorage.setItem("token", data?.token);
+          });
       })
       .catch((err) => {
         console.log(err);
@@ -52,8 +53,9 @@ const Ragistation = () => {
           body: JSON.stringify(user),
         })
           .then((res) => res.json())
-          // eslint-disable-next-line no-unused-vars
-          .then((data) => {});
+          .then((data) => {
+            localStorage.setItem("token", data?.token);
+          });
       })
       .catch((err) => {
         console.log(err);
@@ -71,7 +73,6 @@ const Ragistation = () => {
     const password = form.password.value;
     const confarmPassword = form.confarmPassword.value;
 
-    
     if (password === confarmPassword) {
       await ragistation(email, password)
         .then((result) => {
@@ -89,8 +90,9 @@ const Ragistation = () => {
             body: JSON.stringify(user),
           })
             .then((res) => res.json())
-            // eslint-disable-next-line no-unused-vars
-            .then((data) => {});
+            .then((data) => {
+              localStorage.setItem("token", data?.token);
+            });
         })
         .catch((err) => {
           console.log(err);

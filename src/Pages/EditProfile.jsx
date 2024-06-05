@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import useAuth from "../Hooks/useAuth";
-import {  useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 
 const EditProfile = () => {
   const { user } = useAuth();
@@ -13,6 +13,7 @@ const EditProfile = () => {
   }, [user]);
 
   const handelSubmit = async (e) => {
+    const token = localStorage.getItem("token");
     e.preventDefault();
     const form = e.target;
 
@@ -24,20 +25,25 @@ const EditProfile = () => {
 
     const newData = { email, displayName, bio, phoneNumber, photoURL };
 
-    await fetch(`https://dotslashnews-backend.onrender.com/user/${user?.email}`, {
-      method: "PATCH",
-      headers: {
-        "Content-type": "application/json",
-      },
-      body: JSON.stringify(newData),
-    })
+    await fetch(
+      `https://dotslashnews-backend.onrender.com/user/${user?.email}`,
+      {
+        method: "PATCH",
+        headers: {
+          "Content-type": "application/json",
+          authorization: `Beare ${token}`,
+        },
+        body: JSON.stringify(newData),
+      }
+    )
       .then((res) => res.json())
-      .then((data) => {console.log(data) 
+      .then((data) => {
+        console.log(data);
         if (data.acknowledged) {
-          navigate('/dashbord');
+          navigate("/dashbord");
         }
       });
-    };
+  };
 
   return (
     <div className="w-full min-h-screen  py-1 md:w-2/3 lg:w-3/4">

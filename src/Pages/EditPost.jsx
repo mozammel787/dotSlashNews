@@ -1,4 +1,3 @@
-/* eslint-disable react/no-unknown-property */
 import { useState, useEffect } from "react";
 import { useLoaderData, useNavigate } from "react-router-dom";
 import useAuth from "../Hooks/useAuth";
@@ -7,50 +6,48 @@ const EditPost = () => {
   const news = useLoaderData();
   const { user } = useAuth();
   const navigate = useNavigate();
-  const [newCatagory, setNewCatagory] = useState(category || "");
   const { title, urlToImage, description, top, _id, category } = news;
+
+  const [newCategory, setNewCategory] = useState(category);
 
   useEffect(() => {
     if (category) {
-      setNewCatagory(category);
+      setNewCategory(category);
     }
   }, [category]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const form = e.target;
+    const token = localStorage.getItem("token");
 
-    const title = form.title.value;
-    const urlToImage = form.urlToImage.value;
-    const description = form.description.value;
-    const top = form.top.checked;
+    const form = e.target;
+    const title = form.elements.title.value;
+    const urlToImage = form.elements.urlToImage.value;
+    const description = form.elements.description.value;
+    const top = form.elements.top.checked;
 
     const post = {
       title,
       urlToImage,
       description,
-      category: newCatagory,
+      category: newCategory,
       top,
     };
 
-    await fetch(
-      `https://dotslashnews-backend.onrender.com/news/edit-post/${_id}`,
-      {
-        method: "PATCH",
-        headers: {
-          "Content-type": "application/json",
-        },
-        body: JSON.stringify(post),
-      }
-    )
+    await fetch(`https://dotslashnews-backend.onrender.com/news/edit-post/${_id}`, {
+      method: "PATCH",
+      headers: {
+        "Content-type": "application/json",
+        authorization: `Beare ${token}`,
+      },
+      body: JSON.stringify(post),
+    })
       .then((res) => res.json())
       .then((data) => {
         if (data.acknowledged) {
-          navigate(`my-post/${user.displayName}`);
+          navigate(`/dashbord/my-post/${user.email}`);
         }
       });
-
-    form.reset();
   };
 
   return (
@@ -112,10 +109,9 @@ const EditPost = () => {
                           type="radio"
                           name="Category"
                           value={cat}
-                          checked={newCatagory === cat}
-                          onChange={() => setNewCatagory(cat)}
+                          checked={newCategory === cat}
+                          onChange={() => setNewCategory(cat)}
                           className="radio checked:bg-black"
-                          chaked
                         />
                       </label>
                     </div>
