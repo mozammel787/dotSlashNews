@@ -79,4 +79,4 @@ version: 0.1.0
 ```
 
 ## Credits
-Special thanks to the Programming Hero team for their guidance and support.
+Special thanks to   the Programming Hero team for their guidance and support.
