@@ -74,6 +74,5 @@ version: 0.1.0
   "mongodb": "^6.7.0",
   "nodemon": "^3.1.3"
 }
-
-## Packages List
+## Credits
 Special thanks to the Programming Hero team for their guidance and support.
