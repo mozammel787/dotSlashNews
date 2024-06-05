@@ -30,7 +30,7 @@ const Catagory = () => {
 
   return (
     <>
-      <div className="container mx-auto my-20 flex flex-wrap gap-10 items-center  justify-around">
+      <div className="container mx-auto my-20 flex flex-wrap gap-10 items-center  justify-around px-5 md:px-0">
         {articles?.map((data) => (
           <SingleCard key={data._id} news={data}></SingleCard>
         ))}

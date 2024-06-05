@@ -70,7 +70,7 @@ const AddPost = () => {
               onSubmit={handelSubmit}
               className="items-center sm:mt-5 text-[#000]"
             >
-              <div className="mb-2 sm:mb-6">
+              <div className="mb-5 md:mb-2 sm:mb-6">
                 <label className="block mb-2 text-sm font-medium text-black">
                   Title
                 </label>
@@ -80,7 +80,7 @@ const AddPost = () => {
                   className="w-full px-8 py-4 rounded font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white "
                 />
               </div>
-              <div className="col-span-3 sm:col-span-2">
+              <div className="mb-5 md:mb-2 col-span-3 sm:col-span-2">
                 <label className="block text-sm font-medium text-gray-700">
                   Photo URL
                 </label>
@@ -97,7 +97,7 @@ const AddPost = () => {
                 </div>
               </div>
 
-              <div className="mb-2 sm:my-6">
+              <div className="mb-5 md:mb-2 sm:my-6">
                 <label className="block mb-2 text-sm font-medium text-black">
                   Catagory
                 </label>
@@ -169,7 +169,7 @@ const AddPost = () => {
                   </div>
                 </div>
               </div>
-              <div>
+              <div className="mb-5 md:mb-2">
                 <label>
                   <span className="block mb-2 text-sm font-medium text-black">
                     Set it top news
@@ -178,7 +178,7 @@ const AddPost = () => {
                 </label>
               </div>
 
-              <div className="mb-6">
+              <div className="mb-5 md:mb-2">
                 <label className="block mb-2 text-sm font-medium text-black">
                   Description
                 </label>

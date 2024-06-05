@@ -74,7 +74,7 @@ const AllCards = ({ news }) => {
           See All
         </Link>
       </div>
-      <div className="flex flex-wrap gap-10 items-center  justify-around px-2">
+      <div className="container my-20 mx-auto flex flex-wrap gap-10 items-center justify-aroun">
         {letestNews?.map((data) => (
           <SingleCard key={data._id} news={data}>
             {" "}

@@ -23,7 +23,7 @@ const AllNews = () => {
       <h2 className="my-10 text-2xl text-center font-bold sm:text-3xl">
         All news
       </h2>
-      <div className="container my-20 mx-auto flex flex-wrap gap-10 items-center justify-around ">
+      <div className="container my-20 mx-auto flex flex-wrap gap-10 items-center justify-around px-5 md:px-0 ">
         {news?.map((data) => (
           <SingleCard
             key={data._id}
