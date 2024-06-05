@@ -3,7 +3,7 @@ import useAuth from "../Hooks/useAuth";
 import { useNavigate } from "react-router-dom";
 
 const EditProfile = () => {
-  const { user } = useAuth();
+  const { user, passwordChange } = useAuth();
   const [userInfo, setUserInfo] = useState([]);
   const navigate = useNavigate();
   useEffect(() => {
@@ -22,9 +22,21 @@ const EditProfile = () => {
     const bio = form.bio.value;
     const phoneNumber = form.phone.value;
     const photoURL = form.photoURL.value;
+    const currentPassword = form.oldPassword.value;
+    const newPassword = form.newPassword.value;
 
     const newData = { email, displayName, bio, phoneNumber, photoURL };
 
+    if (!currentPassword == "" && !newPassword == "") {
+      await passwordChange(currentPassword, newPassword)
+        .then((result) => {
+          console.log(result);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
+    console.log(user);
     await fetch(
       `https://dotslashnews-backend.onrender.com/user/${user?.email}`,
       {
@@ -48,7 +60,7 @@ const EditProfile = () => {
   return (
     <div className="w-full min-h-screen  py-1 md:w-2/3 lg:w-3/4">
       <div className="p-2 md:p-4 ">
-        <div className="w-full mx-auto px-6 pb-8 mt-8 sm:max-w-xl sm:rounded-lg">
+        <div className="w-full mx-auto px-6 pb-8 mt-8 sm:max-w-xl sm:rounded">
           <h2 className="pl-6 text-2xl text-center font-bold sm:text-3xl">
             Edit Profile
           </h2>
@@ -73,7 +85,7 @@ const EditProfile = () => {
                 <input
                   type="text"
                   name="name"
-                  className="w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white "
+                  className="w-full px-8 py-4 rounded font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white "
                   defaultValue={userInfo?.displayName}
                 />
               </div>
@@ -84,7 +96,7 @@ const EditProfile = () => {
                 <input
                   type="email"
                   name="email"
-                  className="w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white "
+                  className="w-full px-8 py-4 rounded font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white "
                   defaultValue={userInfo?.email}
                 />
               </div>
@@ -96,7 +108,7 @@ const EditProfile = () => {
                 <input
                   type="number"
                   name="phone"
-                  className="w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white  "
+                  className="w-full px-8 py-4 rounded font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white  "
                   placeholder="phone"
                   defaultValue={userInfo?.phoneNumber}
                 />
@@ -109,21 +121,37 @@ const EditProfile = () => {
                   type="url"
                   name="photoURL"
                   defaultValue={userInfo?.photoURL}
-                  className="w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white "
+                  className="w-full px-8 py-4 rounded font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white "
                   placeholder="Profile Photo URL"
                 />
               </div>
-              <div className="mb-6">
-                <label className="block mb-2 text-sm font-medium text-black">
-                  password
-                </label>
-                <input
-                  className="w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white "
-                  type="password"
-                  placeholder="New Password"
-                  name="password"
-                />
-              </div>
+
+              {!user?.emailVerified && (
+                <div>
+                  <div className="mb-6">
+                    <label className="block mb-2 text-sm font-medium text-black">
+                      Old password
+                    </label>
+                    <input
+                      className="w-full px-8 py-4 rounded font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white "
+                      type="password"
+                      placeholder="Old Password"
+                      name="oldPassword"
+                    />
+                  </div>
+                  <div className="mb-6">
+                    <label className="block mb-2 text-sm font-medium text-black">
+                      New Password
+                    </label>
+                    <input
+                      className="w-full px-8 py-4 rounded font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white "
+                      type="password"
+                      placeholder="New Password"
+                      name="newPassword"
+                    />
+                  </div>
+                </div>
+              )}
 
               <div className="mb-6">
                 <label className="block mb-2 text-sm font-medium text-black">
@@ -133,7 +161,7 @@ const EditProfile = () => {
                   name="bio"
                   rows="4"
                   defaultValue={userInfo?.bio}
-                  className="w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white  "
+                  className="w-full px-8 py-4 rounded font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white  "
                   placeholder="Write your bio here..."
                 ></textarea>
               </div>
@@ -141,7 +169,7 @@ const EditProfile = () => {
               <div className="flex justify-end">
                 <button
                   type="submit"
-                  className=" tracking-wide font-semibold bg-black text-gray-100 w-full py-4 rounded-lg hover:bg-black transition-all duration-300 ease-in-out flex items-center justify-center focus:shadow-outline focus:outline-none"
+                  className=" tracking-wide font-semibold bg-black text-gray-100 w-full py-4 rounded hover:bg-black transition-all duration-300 ease-in-out flex items-center justify-center focus:shadow-outline focus:outline-none"
                 >
                   Save
                 </button>

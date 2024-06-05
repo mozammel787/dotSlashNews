@@ -1,22 +1,13 @@
 /* eslint-disable react/no-unknown-property */
 /* eslint-disable react/prop-types */
-import { useEffect, useState } from "react";
 import SingleCard from "./SingleCard";
 import { Link } from "react-router-dom";
 
 
 const AllCards = ({news}) => {
-    const [articles, setArticles] = useState(news || []);
 
-    useEffect(() => {
-      if (Array.isArray(news)) {
-        // Sort the articles by publishedAt date
-        const sortedArticles = [...news].sort((a, b) => new Date(b.publishedAt) - new Date(a.publishedAt));
-        setArticles(sortedArticles);
-      }
-    }, [news]);
   
-    const letestNews = articles.slice(0, 9);
+    const letestNews = news.slice(0, 9);
     return (
         <>
           <div className="border-b mb-5 flex justify-between text-sm mt-20 pb-5">

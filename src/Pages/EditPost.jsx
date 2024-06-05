@@ -53,7 +53,7 @@ const EditPost = () => {
   return (
     <div className="w-full min-h-screen py-1 md:w-2/3 lg:w-3/4">
       <div className="p-2 md:p-4">
-        <div className="w-full mx-auto px-6 pb-8 mt-8 sm:max-w-xl sm:rounded-lg">
+        <div className="w-full mx-auto px-6 pb-8 mt-8 sm:max-w-xl sm:rounded">
           <h2 className="pl-6 text-2xl text-center font-bold sm:text-3xl">
             Edit Post
           </h2>
@@ -70,7 +70,7 @@ const EditPost = () => {
                   type="text"
                   name="title"
                   defaultValue={title}
-                  className="w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white"
+                  className="w-full px-8 py-4 rounded font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white"
                 />
               </div>
               <div className="col-span-3 sm:col-span-2">
@@ -139,14 +139,14 @@ const EditPost = () => {
                   name="description"
                   rows="7"
                   defaultValue={description}
-                  className="w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white"
+                  className="w-full px-8 py-4 rounded font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white"
                   placeholder="Description"
                 ></textarea>
               </div>
               <div className="flex justify-end">
                 <button
                   type="submit"
-                  className="tracking-wide font-semibold bg-black text-gray-100 w-full py-4 rounded-lg hover:bg-black transition-all duration-300 ease-in-out flex items-center justify-center focus:shadow-outline focus:outline-none"
+                  className="tracking-wide font-semibold bg-black text-gray-100 w-full py-4 rounded hover:bg-black transition-all duration-300 ease-in-out flex items-center justify-center focus:shadow-outline focus:outline-none"
                 >
                   Edit Post
                 </button>

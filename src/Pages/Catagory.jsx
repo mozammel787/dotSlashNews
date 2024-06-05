@@ -6,7 +6,8 @@ import Loding from "../Components/Global/Loding";
 const Catagory = () => {
   const news = useLoaderData();
   const [articles, setArticles] = useState(news || []);
-  
+  const [loading, setLoading] = useState(true);
+
   useEffect(() => {
     if (Array.isArray(news)) {
       // Sort the articles by publishedAt date
@@ -16,10 +17,17 @@ const Catagory = () => {
       setArticles(sortedArticles);
     }
   }, [news]);
-  
-  if (articles?.length === 0) {
-    return <Loding/>}
-  
+
+  useEffect(() => {
+    if (articles) {
+      setLoading(false);
+    }
+  }, [articles]);
+
+  if (loading) {
+    return <Loding />;
+  }
+
   return (
     <>
       <div className="container mx-auto my-20 flex flex-wrap gap-10 items-center  justify-around">

@@ -1,14 +1,17 @@
 import { createContext, useEffect } from "react";
 import { app } from "../FireBase/firebace.config";
 import {
+  EmailAuthProvider,
   GithubAuthProvider,
   GoogleAuthProvider,
   createUserWithEmailAndPassword,
   getAuth,
   onAuthStateChanged,
+  reauthenticateWithCredential,
   signInWithEmailAndPassword,
   signInWithPopup,
   signOut,
+  updatePassword,
 } from "firebase/auth";
 import { useState } from "react";
 
@@ -17,7 +20,7 @@ const auth = getAuth(app);
 // eslint-disable-next-line react/prop-types
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
-
+  const [message, setMessage] = useState('');
   const [loder, setLoder] = useState(true);
 
   const googleProvider = new GoogleAuthProvider();
@@ -37,9 +40,32 @@ const AuthProvider = ({ children }) => {
   const gitHubLogIn = () => {
     return signInWithPopup(auth, gitHubProvider);
   };
+
+  const passwordChange = async (currentPassword,newPassword) => {
+    const credential = EmailAuthProvider.credential(user.email, currentPassword);
+    try {
+      await reauthenticateWithCredential(user, credential);
+      await updatePassword(user, newPassword);
+      setMessage('Password changed successfully.');
+    } catch (error) {
+      console.log(error);
+      handleErrors(error);
+    }
+  };
+  // error handle 
+  const handleErrors = (error) => {
+        setMessage(`Error: ${error.message}`);
+    }
+
+console.log(message);
+
+  // logout 
   const logOut = () => {
     return signOut(auth).then(() => setUser(null));
   };
+
+  // get user 
+
   useEffect(() => {
     const unsascribe = onAuthStateChanged(auth, (currentUser) => {
       if (currentUser) {
@@ -51,6 +77,8 @@ const AuthProvider = ({ children }) => {
     });
     return () => unsascribe();
   }, []);
+
+
   const userInfo = {
     googleLogin,
     gitHubLogIn,
@@ -59,7 +87,8 @@ const AuthProvider = ({ children }) => {
     user,
     loder,
     logOut,
-    setLoder
+    setLoder,
+    passwordChange
   };
 
   return (

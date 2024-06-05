@@ -14,12 +14,13 @@ import AddPost from "../Pages/AddPost";
 import MyPost from "../Pages/MyPost";
 import EditPost from "../Pages/EditPost";
 import ErrorPage from "../Pages/ErrorPage";
+import SearchFilter from "../Pages/SearchFilter";
 
 export const Router = createBrowserRouter([
   {
     path: "/",
     element: <MainLayOut />,
-    errorElement:<ErrorPage/>,
+    errorElement: <ErrorPage />,
     children: [
       {
         path: "",
@@ -48,27 +49,46 @@ export const Router = createBrowserRouter([
       {
         path: "catagory/business",
         element: <Catagory />,
-        loader: () => fetch(`https://dotslashnews-backend.onrender.com/news/catagory/business`),
+        loader: () =>
+          fetch(
+            `https://dotslashnews-backend.onrender.com/news/catagory/business`
+          ),
       },
       {
         path: "catagory/sports",
         element: <Catagory />,
-        loader: () => fetch(`https://dotslashnews-backend.onrender.com/news/catagory/sports`),
+        loader: () =>
+          fetch(
+            `https://dotslashnews-backend.onrender.com/news/catagory/sports`
+          ),
       },
       {
         path: "catagory/entertainment",
         element: <Catagory />,
-        loader: () => fetch(`https://dotslashnews-backend.onrender.com/news/catagory/entertainment`),
+        loader: () =>
+          fetch(
+            `https://dotslashnews-backend.onrender.com/news/catagory/entertainment`
+          ),
       },
       {
         path: "catagory/science",
         element: <Catagory />,
-        loader: () => fetch(`https://dotslashnews-backend.onrender.com/news/catagory/science`),
+        loader: () =>
+          fetch(
+            `https://dotslashnews-backend.onrender.com/news/catagory/science`
+          ),
       },
       {
         path: "catagory/technology",
         element: <Catagory />,
-        loader: () => fetch(`https://dotslashnews-backend.onrender.com/news/catagory/technology`),
+        loader: () =>
+          fetch(
+            `https://dotslashnews-backend.onrender.com/news/catagory/technology`
+          ),
+      },
+      {
+        path: "search",
+        element: <SearchFilter />,
       },
     ],
   },
@@ -95,12 +115,16 @@ export const Router = createBrowserRouter([
       {
         path: "my-post/:id",
         element: <MyPost></MyPost>,
-        loader:({params})=>fetch(`https://dotslashnews-backend.onrender.com/news/my-post/${params.id}`)
+        loader: ({ params }) =>
+          fetch(
+            `https://dotslashnews-backend.onrender.com/news/my-post/${params.id}`
+          ),
       },
       {
         path: "edit-post/:id",
         element: <EditPost></EditPost>,
-        loader:({params})=>fetch(`https://dotslashnews-backend.onrender.com/news/${params.id}`)
+        loader: ({ params }) =>
+          fetch(`https://dotslashnews-backend.onrender.com/news/${params.id}`),
       },
     ],
   },

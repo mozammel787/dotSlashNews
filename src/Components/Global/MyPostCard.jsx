@@ -3,7 +3,7 @@
 import { Link } from "react-router-dom";
 
 const MyPostCard = ({ news, relodPost }) => {
-  const { title, urlToImage, description, author, publishedAt, _id } = news;
+  const { title, urlToImage, description, author, publishedAt, _id ,authorPhoto} = news;
 
   const handelDelete = async () => {
     const token = localStorage.getItem("token");
@@ -36,11 +36,19 @@ const MyPostCard = ({ news, relodPost }) => {
         </figure>
         <div className="card-body p-3 pt-5">
           <div className="flex gap-2 items-center">
-            <img
-              className="w-10 rounded-full"
-              alt="Tailwind CSS Navbar component"
-              src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"
-            />
+          {authorPhoto ? (
+                <img
+                  src={authorPhoto}
+                  alt=""
+                  className="s-10 w-10 rounded-full"
+                />
+              ) : (
+                <img
+                  src="https://source.unsplash.com/75x75/?portrait"
+                  alt=""
+                  className="s-10 w-10 rounded-full"
+                />
+              )}
             <div>
               <p>{author}</p>
               <p className="text-xs text-gray-500">
@@ -50,24 +58,24 @@ const MyPostCard = ({ news, relodPost }) => {
             </div>
           </div>
           <h2 className="card-title font-bold">{title}</h2>
-          <p>{description}</p>
+          <p>{description.slice(0, 250) + '...'}</p>
 
           <div className="flex gap-2">
             <Link
               to={`/news/${_id}`}
-              className="mt-5 tracking-wide font-semibold bg-black text-gray-100 w-full py-4 rounded-lg hover:bg-black transition-all duration-300 ease-in-out flex items-center justify-center focus:shadow-outline focus:outline-none"
+              className="mt-5 tracking-wide font-semibold bg-black text-gray-100 w-full py-4 rounded hover:bg-black transition-all duration-300 ease-in-out flex items-center justify-center focus:shadow-outline focus:outline-none"
             >
               Read More
             </Link>
             <Link
               to={`/dashbord/edit-post/${_id}`}
-              className="mt-5 tracking-wide font-semibold bg-green-600 text-gray-100 w-full py-4 rounded-lg hover:bg-black transition-all duration-300 ease-in-out flex items-center justify-center focus:shadow-outline focus:outline-none"
+              className="mt-5 tracking-wide font-semibold bg-green-600 text-gray-100 w-full py-4 rounded hover:bg-black transition-all duration-300 ease-in-out flex items-center justify-center focus:shadow-outline focus:outline-none"
             >
               Edit post
             </Link>
             <div
               onClick={handelDelete}
-              className="mt-5 tracking-wide font-semibold bg-red-600 text-gray-100 w-full py-4 rounded-lg hover:bg-black transition-all duration-300 ease-in-out flex items-center justify-center focus:shadow-outline focus:outline-none cursor-pointer"
+              className="mt-5 tracking-wide font-semibold bg-red-600 text-gray-100 w-full py-4 rounded hover:bg-black transition-all duration-300 ease-in-out flex items-center justify-center focus:shadow-outline focus:outline-none cursor-pointer"
             >
               Delete Post
             </div>

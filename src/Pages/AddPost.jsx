@@ -1,10 +1,11 @@
 import { useState } from "react";
 import useAuth from "../Hooks/useAuth";
+import { useNavigate } from "react-router-dom";
 
 const AddPost = () => {
   const { user } = useAuth();
   const [catagory, setCatagory] = useState("");
-
+  const navigate = useNavigate();
 
   const handelSubmit = async (e) => {
     const token = localStorage.getItem("token");
@@ -46,18 +47,22 @@ const AddPost = () => {
       body: JSON.stringify(post),
     })
       .then((res) => res.json())
-      .then((data) => console.log(data));
+      .then((data) => {
+        if (data.acknowledged) {
+          navigate(`/dashbord/my-post/${user.email}`);
+        }
+      });
     form.reset();
   };
   return (
-    <div className="w-full min-h-screen  py-1 md:w-2/3 lg:w-3/4">
+    <div className=" ">
       <div className="p-2 md:p-4 ">
-        <div className="w-full mx-auto px-6 pb-8 mt-8 sm:max-w-xl sm:rounded-lg">
+        <div className=" mx-auto px-6 pb-8 mt-8 ">
           <h2 className="pl-6 text-2xl text-center font-bold sm:text-3xl">
             Add Post
           </h2>
 
-          <div className="grid max-w-xl mx-auto mt-8">
+          <div className="grid md:max-w-xl mx-auto mt-8">
             <form
               onSubmit={handelSubmit}
               className="items-center sm:mt-5 text-[#000]"
@@ -69,8 +74,7 @@ const AddPost = () => {
                 <input
                   type="text"
                   name="title"
-                 
-                  className="w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white "
+                  className="w-full px-8 py-4 rounded font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white "
                 />
               </div>
               <div className="col-span-3 sm:col-span-2">
@@ -86,7 +90,6 @@ const AddPost = () => {
                     name="urlToImage"
                     className="w-full px-8 py-4 font-medium bg-gray-100   placeholder-gray-500 text-sm focus:outline-none  focus:bg-white "
                     placeholder="www.example.com"
-                    
                   />
                 </div>
               </div>
@@ -95,7 +98,7 @@ const AddPost = () => {
                 <label className="block mb-2 text-sm font-medium text-black">
                   Catagory
                 </label>
-                <div className="flex gap-5">
+                <div className="flex flex-col md:flex-row md:gap-5">
                   <div className="form-control">
                     <label className="label cursor-pointer gap-2">
                       <span className="label-text">Business</span>
@@ -179,16 +182,15 @@ const AddPost = () => {
                 <textarea
                   name="description"
                   rows="7"
-                  className="w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white  "
+                  className="w-full px-8 py-4 rounded font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white  "
                   placeholder=" Description"
-                 
                 ></textarea>
               </div>
 
               <div className="flex justify-end">
                 <button
                   type="submit"
-                  className=" tracking-wide font-semibold bg-black text-gray-100 w-full py-4 rounded-lg hover:bg-black transition-all duration-300 ease-in-out flex items-center justify-center focus:shadow-outline focus:outline-none"
+                  className=" tracking-wide font-semibold bg-black text-gray-100 w-full py-4 rounded hover:bg-black transition-all duration-300 ease-in-out flex items-center justify-center focus:shadow-outline focus:outline-none"
                 >
                   Add Post
                 </button>

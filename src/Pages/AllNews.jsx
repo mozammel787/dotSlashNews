@@ -2,31 +2,36 @@
 import { useEffect, useState } from "react";
 import SingleCard from "../Components/Global/SingleCard";
 import { useLoaderData } from "react-router-dom";
+import Loding from "../Components/Global/Loding";
 
 const AllNews = () => {
-  const news = useLoaderData();
-  const [articles, setArticles] = useState(news || []);
+  const [loading, setLoading] = useState(true); 
+  const news = useLoaderData(); 
+
   useEffect(() => {
-    if (Array.isArray(news)) {
-      // Sort the articles by publishedAt date
-      const sortedArticles = [...news].sort(
-        (a, b) => new Date(b.publishedAt) - new Date(a.publishedAt)
-      );
-      setArticles(sortedArticles);
+    if (news) {
+      setLoading(false); 
     }
   }, [news]);
 
+  if (loading) {
+    return <Loding/>;
+  }
+
   return (
     <>
-<h2 className="text-center text-5xl font-bold mt-10" >All News</h2>
-      <div className="container mx-auto my-10 flex flex-wrap gap-10 items-center  justify-around">
-        {articles?.map((data) => (
-          <SingleCard key={data._id} news={data}>
-       
-          </SingleCard>
+      <h2 className="my-10 text-2xl text-center font-bold sm:text-3xl">
+        All news
+      </h2>
+      <div className="container my-20 mx-auto flex flex-wrap gap-10 items-center justify-around">
+        {news?.map((data) => (
+          <SingleCard
+            key={data._id}
+            news={data}
+            
+          ></SingleCard>
         ))}
       </div>
-      <div className="flex justify-center"></div>
     </>
   );
 };

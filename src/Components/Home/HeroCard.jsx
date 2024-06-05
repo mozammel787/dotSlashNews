@@ -13,7 +13,7 @@ const HeroCard = ({ news }) => {
   return (
     <Link to={`news/${_id}`}>
       <div
-        className="relative w-full flex items-end justify-start text-left bg-cover bg-center h-[550px]"
+        className="relative w-full flex items-end justify-start text-left bg-cover bg-center h-[350px] md:h-[400px] lg:h-[550px]"
         style={{ backgroundImage: `url(${urlToImage})` }}
       >
         <div className="absolute top-0 mt-20 right-0 bottom-0 left-0 bg-gradient-to-b from-transparent to-black"></div>

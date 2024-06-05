@@ -12,9 +12,20 @@ const DashbordLayOut = () => {
           <Outlet />
           <label
             htmlFor="my-drawer-2"
-            className="btn btn-primary drawer-button lg:hidden"
+            className="btn btn-primary drawer-button lg:hidden absolute top-5 left-5"
           >
-            Open drawer
+           
+        
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 512 512"
+                    className="w-5 h-5 fill-current text-white"
+                  >
+                    <rect width="352" height="32" x="80" y="96"></rect>
+                    <rect width="352" height="32" x="80" y="240"></rect>
+                    <rect width="352" height="32" x="80" y="384"></rect>
+                  </svg>
+               
           </label>
         </div>
         <div className="drawer-side">
@@ -27,17 +38,8 @@ const DashbordLayOut = () => {
             <div className="space-y-3">
               <div className="flex items-center justify-between">
                 <img className="w-20" src={"logo.png"} alt="" />
-                <button className="p-2 ">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 512 512"
-                    className="w-5 h-5 fill-current text-gray-800"
-                  >
-                    <rect width="352" height="32" x="80" y="96"></rect>
-                    <rect width="352" height="32" x="80" y="240"></rect>
-                    <rect width="352" height="32" x="80" y="384"></rect>
-                  </svg>
-                </button>
+
+                
               </div>
 
               <div className="flex-1">
@@ -219,7 +221,7 @@ const DashbordLayOut = () => {
                 <h2 className="text-base font-semibold">{user?.displayName}</h2>
               </div>
             </div>
-            <button className=" btn w-[100%] btn-primary text-white rounded-lg">
+            <button className=" btn w-[100%] btn-primary text-white rounded">
                     <div
                       onClick={() => logOut()}
                       rel="noopener noreferrer"

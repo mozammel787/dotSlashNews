@@ -100,7 +100,7 @@ const Homebusiness = ({ news }) => {
                   {data.title}
                 </div>
                 <p className="text-gray-700 text-base mt-2 mx-5 sm:mx-10">
-                  {data.description}
+                  {data.description.slice(0, 250) + '...'}
                 </p>
               </div>
             </div>
