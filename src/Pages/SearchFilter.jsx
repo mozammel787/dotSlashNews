@@ -8,7 +8,7 @@ const SearchFilter = () => {
   const [loading, setLoading] = useState(true); 
 
   useEffect(() => {
-    fetch(`http://localhost:5000/news`)
+    fetch(`https://dotslashnews-backend.onrender.com/news`)
       .then((res) => res.json())
       .then((data) => setNews(data));
   }, []);
