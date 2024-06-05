@@ -68,7 +68,7 @@ const Header = () => {
               </ul>
             </div>
           </div>
-          <div className="flex items-center gap-5">
+          <div className="flex items-center gap-7 mr-3">
             <Link to={"search"} className="">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -104,7 +104,7 @@ const Header = () => {
                     )}
                   </div>
                 ) : (
-                  <Link to={"/login"} className="btn rounded btn-primary">
+                  <Link to={"/login"} className="btn rounded btn-primary ">
                     Login
                   </Link>
                 )}
