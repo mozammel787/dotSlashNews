@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useLoaderData, useNavigate } from "react-router-dom";
 import useAuth from "../Hooks/useAuth";
+import toast from "react-hot-toast";
 
 const EditPost = () => {
   const news = useLoaderData();
@@ -45,8 +46,11 @@ const EditPost = () => {
       .then((res) => res.json())
       .then((data) => {
         if (data.acknowledged) {
+          toast.success('Successfully Changed')
           navigate(`/dashbord/my-post/${user.email}`);
         }
+      }).catch((error) => {
+        toast.error(error);
       });
   };
 

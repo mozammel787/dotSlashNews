@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import useAuth from "../Hooks/useAuth";
 import { useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
 
 const EditProfile = () => {
   const { user, passwordChange } = useAuth();
@@ -14,16 +15,16 @@ const EditProfile = () => {
 
   const handelSubmit = async (e) => {
     const token = localStorage.getItem("token");
-    e.preventDefault();
-    const form = e.target;
+    e?.preventDefault();
+    const form = e?.target;
 
-    const email = form.email.value;
-    const displayName = form.name.value;
-    const bio = form.bio.value;
-    const phoneNumber = form.phone.value;
-    const photoURL = form.photoURL.value;
-    const currentPassword = form.oldPassword.value;
-    const newPassword = form.newPassword.value;
+    const email = form?.email?.value;
+    const displayName = form?.name?.value;
+    const bio = form?.bio?.value;
+    const phoneNumber = form?.phone?.value;
+    const photoURL = form?.photoURL?.value;
+    const currentPassword = form?.oldPassword?.value;
+    const newPassword = form?.newPassword?.value;
 
     const newData = { email, displayName, bio, phoneNumber, photoURL };
 
@@ -36,7 +37,7 @@ const EditProfile = () => {
           console.log(err);
         });
     }
-    console.log(user);
+
     await fetch(
       `https://dotslashnews-backend.onrender.com/user/${user?.email}`,
       {
@@ -52,8 +53,12 @@ const EditProfile = () => {
       .then((data) => {
         console.log(data);
         if (data.acknowledged) {
+          toast.success("Change Successfull");
           navigate("/dashbord");
         }
+      })
+      .catch((error) => {
+        toast.error(error);
       });
   };
 

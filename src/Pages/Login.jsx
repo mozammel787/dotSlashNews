@@ -3,6 +3,7 @@
 import { useEffect } from "react";
 import useAuth from "../Hooks/useAuth";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
 
 const Login = () => {
   const { googleLogin, gitHubLogIn, user, logIn } = useAuth();
@@ -31,11 +32,11 @@ const Login = () => {
           .then((res) => res.json())
           .then((data) => {
             localStorage.setItem("token", data?.token);
+            toast.success('Login Successfull')
           });
       })
-      .catch((err) => {
-        console.log(err);
-        console.log(err);
+      .catch((error) => {
+        toast.error(error);
       });
   };
   const handelGitHubLogIn = () => {
@@ -57,11 +58,11 @@ const Login = () => {
           .then((res) => res.json())
           .then((data) => {
             localStorage.setItem("token", data?.token);
+            toast.success('Login Successfull')
           });
       })
-      .catch((err) => {
-        console.log(err);
-        console.log(err);
+      .catch((error) => {
+        toast.error(error);
       });
   };
 
@@ -88,11 +89,11 @@ const Login = () => {
           .then((res) => res.json())
           .then((data) => {
             localStorage.setItem("token", data?.token);
+            toast.success('Login Successfull')
           });
       })
-      .catch((err) => {
-        console.log(err);
-        console.log(err);
+      .catch((error) => {
+        toast.error(error);
       });
   };
   useEffect(() => {

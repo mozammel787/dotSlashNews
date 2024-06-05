@@ -1,6 +1,7 @@
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import useAuth from "../Hooks/useAuth";
 import { useEffect } from "react";
+import toast from "react-hot-toast";
 
 const Ragistation = () => {
   const { googleLogin, gitHubLogIn, ragistation, user } = useAuth();
@@ -29,11 +30,11 @@ const Ragistation = () => {
           .then((res) => res.json())
           .then((data) => {
             localStorage.setItem("token", data?.token);
+            toast.success("Ragistation Successfull");
           });
       })
-      .catch((err) => {
-        console.log(err);
-        console.log(err);
+      .catch((error) => {
+        toast.error(error);
       });
   };
   const handelGitHubLogIn = () => {
@@ -55,11 +56,11 @@ const Ragistation = () => {
           .then((res) => res.json())
           .then((data) => {
             localStorage.setItem("token", data?.token);
+            toast.success("Ragistation Successfull");
           });
       })
-      .catch((err) => {
-        console.log(err);
-        console.log(err);
+      .catch((error) => {
+        toast.error(error);
       });
   };
 
@@ -92,11 +93,11 @@ const Ragistation = () => {
             .then((res) => res.json())
             .then((data) => {
               localStorage.setItem("token", data?.token);
+              toast.success("Ragistation Successfull");
             });
         })
-        .catch((err) => {
-          console.log(err);
-          console.log(err);
+        .catch((error) => {
+          toast.error(error);
         });
 
       form.reset();

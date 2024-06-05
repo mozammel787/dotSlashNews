@@ -1,6 +1,7 @@
 import { useState } from "react";
 import useAuth from "../Hooks/useAuth";
 import { useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
 
 const AddPost = () => {
   const { user } = useAuth();
@@ -49,10 +50,12 @@ const AddPost = () => {
       .then((res) => res.json())
       .then((data) => {
         if (data.acknowledged) {
+          toast.success('Successfully toasted!')
           navigate(`/dashbord/my-post/${user.email}`);
         }
+      }).catch((error) => {
+        toast.error(error);
       });
-    form.reset();
   };
   return (
     <div className=" ">
