@@ -27,7 +27,7 @@ const MyPost = () => {
       <h2 className="my-10 text-2xl text-center font-bold sm:text-3xl">
         My Post
       </h2>
-      <div className="container my-20 mx-auto flex flex-wrap gap-10 items-center justify-around">
+      <div className="container my-20 mx-auto flex flex-wrap gap-10 items-center justify-around px-2">
         {articles?.map((data) => (
           <MyPostCard
             key={data._id}

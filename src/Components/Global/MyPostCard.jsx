@@ -26,7 +26,7 @@ const MyPostCard = ({ news, relodPost }) => {
 
   return (
     <>
-      <div className="card w-[31%] h-[600px] bg-base-100 shadow">
+      <div className="card max-w-[485px] md:h-[600px] bg-base-100 shadow ">
         <figure>
           <img
             src={urlToImage}
