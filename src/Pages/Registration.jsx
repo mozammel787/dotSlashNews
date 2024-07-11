@@ -20,7 +20,7 @@ const Ragistation = () => {
           photoURL: result?.user?.photoURL,
           phoneNumber: result?.user?.phoneNumber,
         };
-        fetch("https://dotslashnews-backend.onrender.com/user/", {
+        fetch("https://dot-slash-news-back-end.vercel.app/user/", {
           method: "POST",
           headers: {
             "Content-type": "application/json",
@@ -46,7 +46,7 @@ const Ragistation = () => {
           photoURL: result?.user?.photoURL,
           phoneNumber: result?.user?.phoneNumber,
         };
-        fetch("https://dotslashnews-backend.onrender.com/user", {
+        fetch("https://dot-slash-news-back-end.vercel.app/user", {
           method: "POST",
           headers: {
             "Content-type": "application/json",
@@ -83,7 +83,7 @@ const Ragistation = () => {
             photoURL: photoURL,
             phoneNumber: result?.user?.phoneNumber,
           };
-          fetch("https://dotslashnews-backend.onrender.com/user", {
+          fetch("https://dot-slash-news-back-end.vercel.app/user", {
             method: "POST",
             headers: {
               "Content-type": "application/json",

@@ -8,7 +8,7 @@ const SearchFilter = () => {
   const [loading, setLoading] = useState(true); 
 
   useEffect(() => {
-    fetch(`https://dotslashnews-backend.onrender.com/news`)
+    fetch(`https://dot-slash-news-back-end.vercel.app/news`)
       .then((res) => res.json())
       .then((data) => setNews(data));
   }, []);

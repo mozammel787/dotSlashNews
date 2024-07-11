@@ -23,41 +23,40 @@ const SingleCard = ({ news }) => {
         className="flex justify-between flex-col max-w-[485px] md:h-[720px] p-6 space-y-3 overflow-hidden rounded shadow bg-gray-50 text-gray-800"
       >
         <div className="">
-        
           <div>
             <img
               src={urlToImage}
               alt=""
               className="object-cover w-full mb-4 h-60 sm:h-96 bg-gray-500"
             />
-              <div className="flex  space-x-4">
-            {authorPhoto ? (
-              <img
-                alt=""
-                src={authorPhoto}
-                className="object-cover w-12 h-12 rounded-full shadow bg-gray-500 border-2 border-gray-300"
-              />
-            ) : (
-              <img
-                alt=""
-                src="https://source.unsplash.com/75x75/?portrait"
-                className="object-cover w-12 h-12 rounded-full shadow bg-gray-500 border-2 border-gray-300"
-              />
-            )}
-            <div className="flex flex-col space-y-1">
-              <a
-                rel="noopener noreferrer"
-                href="#"
-                className="text-sm font-semibold"
-              >
-                {author}
-              </a>
-              <span className="text-xs text-gray-600">
-                {" "}
-                {formatDate(publishedAt)}
-              </span>
+            <div className="flex  space-x-4">
+              {authorPhoto ? (
+                <img
+                  alt=""
+                  src={authorPhoto}
+                  className="object-cover w-12 h-12 rounded-full shadow bg-gray-500 border-2 border-gray-200"
+                />
+              ) : (
+                <img
+                  alt=""
+                  src={`https://picsum.photos/200/300?random=${_id}`}
+                  className="object-cover w-12 h-12 rounded-full shadow bg-gray-500 border-2 border-gray-200"
+                />
+              )}
+              <div className="flex flex-col space-y-1">
+                <a
+                  rel="noopener noreferrer"
+                  href="#"
+                  className="text-sm font-semibold"
+                >
+                  {author}
+                </a>
+                <span className="text-xs text-gray-600">
+                  {" "}
+                  {formatDate(publishedAt)}
+                </span>
+              </div>
             </div>
-          </div>
             <h2 className="my-1 text-xl font-semibold">{title}</h2>
             <p className="text-sm text-gray-600">
               {description?.slice(0, 250) + "..."}

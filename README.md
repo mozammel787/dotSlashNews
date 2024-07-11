@@ -28,7 +28,7 @@ Dot Slash News is a full-stack news portal web application built using the MERN 
 ## Live Links
 
 - **Live Application:** [Dot Slash News](https://dot-slash-news.vercel.app/)
-- **Server Live Link:** [Dot Slash News Backend](https://dotslashnews-backend.onrender.com/)
+- **Server Live Link:** [Dot Slash News Backend](https://dot-slash-news-back-end.vercel.app/)
 
 ## Repository Links
 

@@ -9,7 +9,7 @@ const MyPostCard = ({ news, relodPost }) => {
     const token = localStorage.getItem("token");
 
     await fetch(
-      `https://dotslashnews-backend.onrender.com/news/delete-post/${_id}`,
+      `https://dot-slash-news-back-end.vercel.app/news/delete-post/${_id}`,
       {
         method: "DELETE",
         headers: {

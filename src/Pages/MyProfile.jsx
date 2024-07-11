@@ -7,7 +7,7 @@ const MyProfile = () => {
   const [userInfo, setUserInfo] = useState([]);
 
   useEffect(() => {
-    fetch(`https://dotslashnews-backend.onrender.com/user/${user?.email}`)
+    fetch(`https://dot-slash-news-back-end.vercel.app/user/${user?.email}`)
       .then((res) => res.json())
       .then((data) => setUserInfo(data));
   }, [user]);
