@@ -22,7 +22,7 @@ const Login = () => {
           photoURL: result?.user?.photoURL,
           phoneNumber: result?.user?.phoneNumber,
         };
-        fetch("https://dot-slash-news-back-end.vercel.app/user/", {
+        fetch("https://dotslashnews-backend.onrender.com/user/", {
           method: "POST",
           headers: {
             "Content-type": "application/json",
@@ -48,7 +48,7 @@ const Login = () => {
           photoURL: result?.user?.photoURL,
           phoneNumber: result?.user?.phoneNumber,
         };
-        fetch("https://dot-slash-news-back-end.vercel.app/user", {
+        fetch("https://dotslashnews-backend.onrender.com/user", {
           method: "POST",
           headers: {
             "Content-type": "application/json",
@@ -79,7 +79,7 @@ const Login = () => {
           displayName: result?.user?.displayName,
           email: result?.user?.email,
         };
-        fetch("https://dot-slash-news-back-end.vercel.app/user", {
+        fetch("https://dotslashnews-backend.onrender.com/user", {
           method: "POST",
           headers: {
             "Content-type": "application/json",

@@ -25,7 +25,7 @@ export const Router = createBrowserRouter([
       {
         path: "",
         element: <Home />,
-        loader: () => fetch("https://dot-slash-news-back-end.vercel.app/news"),
+        loader: () => fetch("https://dotslashnews-backend.onrender.com/news"),
       },
       {
         path: "/login",
@@ -39,19 +39,19 @@ export const Router = createBrowserRouter([
         path: "news/:id",
         element: <SingleNewsPage />,
         loader: ({ params }) =>
-          fetch(`https://dot-slash-news-back-end.vercel.app/news/${params.id}`),
+          fetch(`https://dotslashnews-backend.onrender.com/news/${params.id}`),
       },
       {
         path: "all-news",
         element: <AllNews />,
-        loader: () => fetch("https://dot-slash-news-back-end.vercel.app/news"),
+        loader: () => fetch("https://dotslashnews-backend.onrender.com/news"),
       },
       {
         path: "catagory/business",
         element: <Catagory />,
         loader: () =>
           fetch(
-            `https://dot-slash-news-back-end.vercel.app/news/catagory/business`
+            `https://dotslashnews-backend.onrender.com/news/catagory/business`
           ),
       },
       {
@@ -59,7 +59,7 @@ export const Router = createBrowserRouter([
         element: <Catagory />,
         loader: () =>
           fetch(
-            `https://dot-slash-news-back-end.vercel.app/news/catagory/sports`
+            `https://dotslashnews-backend.onrender.com/news/catagory/sports`
           ),
       },
       {
@@ -67,7 +67,7 @@ export const Router = createBrowserRouter([
         element: <Catagory />,
         loader: () =>
           fetch(
-            `https://dot-slash-news-back-end.vercel.app/news/catagory/entertainment`
+            `https://dotslashnews-backend.onrender.com/news/catagory/entertainment`
           ),
       },
       {
@@ -75,7 +75,7 @@ export const Router = createBrowserRouter([
         element: <Catagory />,
         loader: () =>
           fetch(
-            `https://dot-slash-news-back-end.vercel.app/news/catagory/science`
+            `https://dotslashnews-backend.onrender.com/news/catagory/science`
           ),
       },
       {
@@ -83,7 +83,7 @@ export const Router = createBrowserRouter([
         element: <Catagory />,
         loader: () =>
           fetch(
-            `https://dot-slash-news-back-end.vercel.app/news/catagory/technology`
+            `https://dotslashnews-backend.onrender.com/news/catagory/technology`
           ),
       },
       {
@@ -117,14 +117,14 @@ export const Router = createBrowserRouter([
         element: <MyPost></MyPost>,
         loader: ({ params }) =>
           fetch(
-            `https://dot-slash-news-back-end.vercel.app/news/my-post/${params.id}`
+            `https://dotslashnews-backend.onrender.com/news/my-post/${params.id}`
           ),
       },
       {
         path: "edit-post/:id",
         element: <EditPost></EditPost>,
         loader: ({ params }) =>
-          fetch(`https://dot-slash-news-back-end.vercel.app/news/${params.id}`),
+          fetch(`https://dotslashnews-backend.onrender.com/news/${params.id}`),
       },
     ],
   },

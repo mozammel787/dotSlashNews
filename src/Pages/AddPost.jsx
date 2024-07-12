@@ -39,7 +39,7 @@ const AddPost = () => {
       authorEmail,
     };
 
-    await fetch("https://dot-slash-news-back-end.vercel.app/news/add-post", {
+    await fetch("https://dotslashnews-backend.onrender.com/news/add-post", {
       method: "POST",
       headers: {
         "Content-type": "application/json",

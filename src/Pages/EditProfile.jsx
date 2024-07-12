@@ -8,7 +8,7 @@ const EditProfile = () => {
   const [userInfo, setUserInfo] = useState([]);
   const navigate = useNavigate();
   useEffect(() => {
-    fetch(`https://dot-slash-news-back-end.vercel.app/user/${user?.email}`)
+    fetch(`https://dotslashnews-backend.onrender.com/user/${user?.email}`)
       .then((res) => res.json())
       .then((data) => setUserInfo(data));
   }, [user]);
@@ -39,7 +39,7 @@ const EditProfile = () => {
     }
 
     await fetch(
-      `https://dot-slash-news-back-end.vercel.app/user/${user?.email}`,
+      `https://dotslashnews-backend.onrender.com/user/${user?.email}`,
       {
         method: "PATCH",
         headers: {

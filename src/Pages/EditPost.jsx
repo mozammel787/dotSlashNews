@@ -35,7 +35,7 @@ const EditPost = () => {
       top,
     };
 
-    await fetch(`https://dot-slash-news-back-end.vercel.app/news/edit-post/${_id}`, {
+    await fetch(`https://dotslashnews-backend.onrender.com/news/edit-post/${_id}`, {
       method: "PATCH",
       headers: {
         "Content-type": "application/json",
