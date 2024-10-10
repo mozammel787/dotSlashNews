@@ -1,4 +1,5 @@
 import { useLoaderData } from "react-router-dom";
+import Loding from "../Components/Global/Loding";
 
 const SingleNewsPage = () => {
   const news = useLoaderData();
@@ -13,6 +14,12 @@ const SingleNewsPage = () => {
   } = news;
   const date = new Date(publishedAt);
   const formattedDate = date.toLocaleString();
+
+  if (!news) {
+    return (
+        <Loding />
+    );
+}
   return (
     <>
       <article className=" px-6 py-10 mx-auto space-y-12  text-gray-900">

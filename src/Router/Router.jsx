@@ -25,7 +25,6 @@ export const Router = createBrowserRouter([
       {
         path: "",
         element: <Home />,
-        loader: () => fetch("https://dotslashnews-backend.onrender.com/news"),
       },
       {
         path: "/login",
@@ -43,8 +42,7 @@ export const Router = createBrowserRouter([
       },
       {
         path: "all-news",
-        element: <AllNews />,
-        loader: () => fetch("https://dotslashnews-backend.onrender.com/news"),
+        element: <AllNews />
       },
       {
         path: "catagory/business",
